@@ -10,8 +10,12 @@ class DB():
         self.cursor.execute(sql, produto)
         self.connection.commit()
     
-    def read_products(self, campos='*'):
-        sql = f'SELECT {campos} FROM produtos'
+    def read_products(self, campos='*', filtro=None, ordem=None):
+        sql = f"SELECT {campos} FROM produtos"
+        if filtro:
+            sql += f" WHERE codigo LIKE '{filtro}%' OR nome LIKE '%{filtro}%'"
+        if ordem:
+            sql += f" ORDER BY {ordem}"
         self.cursor.execute(sql)
         return self.cursor.fetchall()
 

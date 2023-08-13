@@ -1,9 +1,10 @@
 from PyQt6 import uic
-from PyQt6.QtWidgets import QWidget, QTableWidgetItem
+from PyQt6.QtWidgets import QWidget, QTableWidgetItem, QFileDialog
 from Databank import DB
 import MessageBox
 
 class WidgetEstoque(QWidget):
+    #funcções de configuração
     def __init__(self):
         super().__init__()
         uic.loadUi('ui/estoque.ui', self)
@@ -21,8 +22,19 @@ class WidgetEstoque(QWidget):
         self.dialog.valor.valueChanged.connect(lambda: self.calcular_margem())
         self.dialog.custo.valueChanged.connect(lambda: self.calcular_valor())
 
+        self.parametro.textChanged.connect(lambda: self.listar_produtos())
+        self.ordem.currentTextChanged.connect(lambda: self.listar_produtos())
+
+        self.excel.clicked.connect(lambda: self.exportar_excel())
+
+        self.table.cellDoubleClicked.connect(lambda: self.show_dialog_alterar())
+
+
+    #funções essenciais
     def listar_produtos(self):
-        produtos = self.db.read_products()
+        parametro = self.parametro.text().strip()
+        ordem = self.ordem.currentText().lower()
+        produtos = self.db.read_products(filtro=parametro, ordem=ordem)
         self.table.setRowCount(len(produtos))
         for row in range(0, len(produtos)):
             for column in range(0, len(produtos[0])):
@@ -53,6 +65,14 @@ class WidgetEstoque(QWidget):
     def alterar_produto(self):
         pass
    
+    def exportar_excel(self):
+        from pandas import read_sql_query
+        tabela = read_sql_query('SELECT * FROM produtos', self.db.connection)
+        directory = QFileDialog().getExistingDirectory() + '\estoque.xlsx'
+        tabela.to_excel(directory)
+
+    
+    #funções extras
     def calcular_margem(self):
         valor = self.dialog.valor.value()
         custo = self.dialog.custo.value()
@@ -66,8 +86,20 @@ class WidgetEstoque(QWidget):
         valor = custo + custo*margem/100
         self.dialog.valor.setValue(valor)
 
+    def show_dialog_cadastrar(self):
+        #self.dialog.
+        pass
+
     def show_dialog_alterar(self):
+        row = self.table.currentRow()
+        self.dialog.codigo.setText(self.table.item(row, 0).text())
+        self.dialog.nome.setText(self.table.item(row, 1).text())
+        self.dialog.custo.setValue(float(self.table.item(row, 2).text()))
+        self.dialog.valor.setValue(float(self.table.item(row, 3).text()))
+        self.dialog.margem.setValue(float(self.table.item(row, 4).text()))
+        self.dialog.estoque.setValue(int(self.table.item(row, 5).text()))
         self.dialog.show()
+        
 
     def clear_dialog(self):
         self.dialog.codigo.clear()

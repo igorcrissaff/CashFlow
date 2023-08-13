@@ -77,7 +77,7 @@ background-color: rgb(230, 230, 230);</string>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="excel">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -89,70 +89,36 @@ background-color: rgb(230, 230, 230);</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="pushButton_3">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Pesquisar:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLineEdit" name="parametro">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
           <height>30</height>
          </size>
         </property>
-        <property name="text">
-         <string>Movimentar estoque</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Codigo:</string>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid #8c8c8c;</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Produto:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>Ordenar por:</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid #8c8c8c;</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_2">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
-border: 1px solid #8c8c8c;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QComboBox" name="comboBox">
+       <widget class="QComboBox" name="ordem">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -169,6 +135,15 @@ border: 1px solid #8c8c8c;</string>
          <string notr="true">background-color: rgb(255, 255, 255);
 border: 1px solid #8c8c8c;</string>
         </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string/>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <item>
          <property name="text">
           <string/>
@@ -176,12 +151,17 @@ border: 1px solid #8c8c8c;</string>
         </item>
         <item>
          <property name="text">
-          <string>Preço de compra</string>
+          <string>Custo</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Preço de venda</string>
+          <string>Valor</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Margem</string>
          </property>
         </item>
         <item>
@@ -190,6 +170,19 @@ border: 1px solid #8c8c8c;</string>
          </property>
         </item>
        </widget>
+      </item>
+      <item row="1" column="2">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -202,6 +195,12 @@ background-color: #fff;</string>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
@@ -224,6 +223,11 @@ background-color: #fff;</string>
      <column>
       <property name="text">
        <string>Preço de venda</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Margem de lucro</string>
       </property>
      </column>
      <column>
