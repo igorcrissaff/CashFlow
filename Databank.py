@@ -18,7 +18,23 @@ class DB():
             sql += f" ORDER BY {ordem}"
         self.cursor.execute(sql)
         return self.cursor.fetchall()
+    
+    def update_protuct(self, id, produto):
+        updates = []
+        keys = produto.keys()
+        for key in keys:
+            updates.append(f"{key} = '{produto[key]}'")
+        updates = str(updates)[1:-1].replace('"', '')
+        sql = f"UPDATE produtos SET {updates} WHERE codigo = '{id}'"
+        self.cursor.execute(sql)
+        self.connection.commit()
+
+    def delete_product(self, codigo):
+        sql = f"DELETE FROM produtos WHERE codigo='{codigo}'"
+        self.cursor.execute(sql)
+        self.connection.commit()
 
 if __name__ == '__main__':
     db = DB()
+    db.update_protuct(12, nome='123412414124124', custo=13131)
     

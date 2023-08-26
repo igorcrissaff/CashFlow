@@ -5,7 +5,7 @@ import Estoque
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('ui/main.ui', self)
+        uic.loadUi('ui/admin.ui', self)
         self.sections()
         self.set_signals()
 

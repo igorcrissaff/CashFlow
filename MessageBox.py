@@ -19,7 +19,7 @@ class Msg(QMessageBox):
         #self.setIcon(QMessageBox.question)
         self.setText(txt)
         self.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
-        confirm = self.exec_()
+        confirm = self.exec()
         return True if confirm == QMessageBox.StandardButton.Ok else False
 
     def info(self, txt):
