@@ -10,9 +10,6 @@ class MainWindow(QMainWindow):
         self.set_signals()
 
     def set_signals(self):
-        self.exit.clicked.connect(lambda: self.close())
-        self.minimize.clicked.connect(lambda: self.showMinimized())
-
         self.btn_estoque.clicked.connect(lambda: self.body.setCurrentWidget(self.estoque))
 
     def sections(self):

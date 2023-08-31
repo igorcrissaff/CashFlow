@@ -19,6 +19,11 @@ class DB():
         self.cursor.execute(sql)
         return self.cursor.fetchall()
     
+    def consultar_produto(self, codigo, campos='*'):
+        sql = f"SELECT {campos} FROM produtos WHERE codigo = '{codigo}'"
+        self.cursor.execute(sql)
+        return self.cursor.fetchone()
+
     def update_protuct(self, id, produto):
         updates = []
         keys = produto.keys()
@@ -34,7 +39,11 @@ class DB():
         self.cursor.execute(sql)
         self.connection.commit()
 
+    def cadastrar_venda(self, produto):
+        sql = f"INSERT INTO vendas VALUES(?,?,?,?)"
+        self.cursor.execute(sql, produto)
+        self.connection.commit()
+
 if __name__ == '__main__':
     db = DB()
-    db.update_protuct(12, nome='123412414124124', custo=13131)
     

@@ -9,45 +9,205 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>333</width>
-    <height>333</height>
+    <width>330</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>333</width>
-    <height>333</height>
+    <width>330</width>
+    <height>360</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>333</width>
-    <height>333</height>
+    <width>330</width>
+    <height>360</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>CashFlow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/icone.ico</normaloff>../images/icone.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(243, 243, 244);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
+   <property name="topMargin">
+    <number>10</number>
+   </property>
+   <property name="rightMargin">
+    <number>10</number>
+   </property>
+   <property name="bottomMargin">
+    <number>10</number>
+   </property>
    <item>
-    <widget class="QListWidget" name="list">
+    <widget class="QFrame" name="frame_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>45</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid #0053cc;
+background-color: #0053cc;
+border-radius: 5px;
+color: #fff;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../images/search.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="filtro">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Rubik</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #fff;
+border-radius: 2.5px;
+color: #220e40;</string>
+        </property>
+        <property name="placeholderText">
+         <string>Pesquisar por codigo ou nome</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="table">
      <property name="styleSheet">
       <string notr="true">border-radius: 5px;
 background-color: rgb(255, 255, 255);
 border: 1px solid #8c8c8c;</string>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>false</bool>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>102</number>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>New Row</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Codigo</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nome</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Valor</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>123</string>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string>123</string>
+      </property>
+     </item>
+     <item row="0" column="2">
+      <property name="text">
+       <string>123</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="btn">
      <property name="minimumSize">
       <size>
        <width>0</width>
        <height>40</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Rubik</family>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -62,7 +222,7 @@ border-color: #000096;
 }</string>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>Escolher</string>
      </property>
     </widget>
    </item>

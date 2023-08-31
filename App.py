@@ -1,10 +1,14 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-import Main
+import Admin
+import Caixa
 
 app = QApplication(sys.argv)
 
-main = Main.MainWindow()
+admin = Admin.MainWindow()
+caixa = Caixa.Window()
 
-main.showFullScreen()
+admin.caixa.clicked.connect(lambda: caixa.showMaximized())
+
+admin.showMaximized()
 app.exec()
